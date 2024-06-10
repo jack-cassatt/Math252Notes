@@ -1,0 +1,253 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\begin{document}
+\title{\centering Calculus 3 Notes}
+\author{Jack Cassatt}
+\maketitle
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{notes-titlepage.jpg}
+    \caption{ChatGPT Visualization of this Topic}
+\end{figure}
+
+\newpage
+
+\section{Vectors}
+\subsection{Dot Product}
+The dot product of two vectors is defined as:
+\begin{equation}
+    \vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3
+\end{equation}
+Where $\vec{a} = \langle a_1, a_2, a_3 \rangle$ and $\vec{b} = \langle b_1, b_2, b_3 \rangle$
+
+\subsection{Cross Product}
+\indent The cross product of two vectors is defined as:
+\begin{equation}
+    \vec{a} \times \vec{b} = \langle (a_2b_3 - a_3b_2), (a_3b_1 - a_1b_3), (a_1b_2 - a_2b_1) \rangle
+\end{equation} \\
+Where $\vec{a} = \langle a_1, a_2, a_3 \rangle$ and $\vec{b} = \langle b_1, b_2, b_3 \rangle$ \\
+\newline
+The cross product $\vec{a} \times \vec{b}$ is orthogonal to both $\vec{a}$ and $\vec{b}$, therefore: \\
+\begin{center}
+$\vec{a} \cdot (\vec{a} \times \vec{b}) = 0 \quad \text{and} \quad
+\vec{b} \cdot (\vec{a} \times \vec{b}) = 0$
+\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{cross-product-in-vector-algebra.jpg}
+    \caption{Cross Product in Vector Algebra}
+\end{figure}
+
+\subsection{Vector Magnitude}
+The magnitude of a vector $\vec{a}$ is given by:
+\begin{equation}
+    \lVert \vec{a} \rVert = \sqrt{a_1^2 + a_2^2 + a_3^2}
+\end{equation}
+
+\newpage
+
+\section{Practical Calculations in 3D Space}
+
+\subsection{Projection of a Vector}
+The projection of a vector $\vec{a}$ onto a vector $\vec{b}$ is given by:
+\begin{equation}
+    \text{proj}_{\vec{b}} \vec{a} = \frac{\vec{a} \cdot \vec{b}}{\lVert \vec{b} \rVert^2} \vec{b}
+\end{equation}
+
+\subsection{Find the Unit Vector}
+The unit vector of a vector $\vec{a}$ is given by:
+\begin{equation}
+    \hat{a} = \frac{1}{\lVert \vec{a} \rVert} \cdot \vec{a}
+\end{equation}
+
+\subsection{Find the Angle Between Two Vectors}
+The angle between two vectors $\vec{a}$ and $\vec{b}$ is given by:
+\begin{equation}
+    \theta = \arccos \left( \frac{\vec{a} \cdot \vec{b}}{\lVert \vec{a} \rVert \lVert \vec{b} \rVert} \right)
+\end{equation}
+
+\subsection{Area of a Parallelogram}
+The area of a parallelogram spanned by two vectors $\vec{a}$ and $\vec{b}$ is given by:
+\begin{equation}
+    \text{Area} = \lVert \vec{a} \times \vec{b} \rVert
+\end{equation}
+
+\subsection{Find distance of point to line}
+Given points $P$, $Q$, and $R$ where $P$ is the point, and $Q$ and $R$ define the line $\overleftrightarrow{QR}$, the distance from $P$ to the line is given by:
+\begin{equation}
+    \text{Distance} = \frac{\lVert \vec{QP} \times \vec{QR} \rVert}{\lVert \vec{QR} \rVert} = \frac{\text{Area}}{\text{Base}} = \text{Perpendicular Height}
+\end{equation}
+
+\subsection{Find the equation of a plane}
+Given a point $P$ and a normal vector $\vec{n}$, the equation of a plane is given by:
+\begin{equation}
+    \vec{n} \cdot \vec{PQ} = 0
+\end{equation}
+Where $\vec{PQ}$ is the vector from point $P$ to any point $Q$ on the plane. \\
+\begin{equation}
+    \therefore \vec{n} \cdot \langle x - x_0, y - y_0, z - z_0 \rangle = 0
+\end{equation}
+Where $(x_0, y_0, z_0)$ is the point $P$.
+Solve for the equation in the format $ax + by + cz + d = 0$.
+
+\subsection{Find distance of Point to Plane}
+Given a point $P$ and a plane $ax + by + cz + d = 0$, the distance from the point to the plane is given by:
+\begin{equation}
+    \text{Distance} = \frac{\lvert ax_0 + by_0 + cz_0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}}
+\end{equation}
+Where $(x_0, y_0, z_0)$ is the point $P$.
+
+\newpage
+
+\section{Determining 3-Demensional Shapes}
+\subsection{Breaking Down a 3D Shape into 2D Planes}
+We replace each value \(x\), \(y\), and \(z\) in a 3D shape with a constant \(k\) to determine the shape.
+Given the equation \(x^2 - 2y^2 - z^2 = 1\), we can replace \(x\), \(y\), and \(z\) with \(k\) to get the following:
+\begin{alignat}{2}
+    \text{(xy-plane:)} \quad & x^2 - 2y^2 = 1 + k^2 \quad & \text{(hyperbolic)} \\
+    \text{(xz-plane:)} \quad & x^2 - z^2 = 1 + 2k^2 \quad & \text{(hyperbolic)} \\
+    \text{(yz-plane:)} \quad & 2y^2 + z^2 = k^2 - 1 \quad & \text{(ellipse, where \(k^2 - 1 > 0\))}
+\end{alignat} \\
+\newline
+
+Therefore we can conclude that this shape is an \textbf{\textcolor{red}{elliptical hyperboloid of one sheet}}. This is not to be mistaken with an \textbf{\textcolor{red}{elliptical hyperboloid of two sheets}}, exemplified by the equation ($x^2 - 2y^2 - z^2 = 1$), where:
+\begin{alignat}{2}
+    \text{(xy-plane:)} \quad & x^2 + 2y^2 = 1 + k^2 \quad & \text{(ellipse)} \\
+    \text{(xz-plane:)} \quad & x^2 - z^2 = 1 - 2k^2 \quad & \text{(hyperbolic)} \\
+    \text{(yz-plane:)} \quad & 2y^2 - z^2 = 1 - k^2 \quad & \text{(hyperbolic)}
+\end{alignat} \\
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.35]{elliptical-hyperboloid-of-one-sheet.png}
+        \caption{\centering Elliptical Hyperboloid of One Sheet 
+        ex. $x^2 + 2y^2 - z^2 = 1$}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.35]{elliptical-hyperboloid-of-two-sheets.png}
+        \caption{\centering Elliptical Hyperboloid of Two Sheets
+        ex. $x^2 - 2y^2 - z^2 = 1$}
+    \end{minipage}
+\end{figure}
+\subsection{Shapes of 2D Planes in 3D Space}
+\begin{center}
+\begin{enumerate}
+    \item $ax^2 + by^2 = C + ck^n$: Ellipse
+    \item $ax^2 + by^2 = C - ck^n$: Ellipse (Where $C - ck^n > 0$)
+    \item $ax^2 - by^2 = C \pm ck^n$: Hyperbolic
+    \item $ax^2 - by = C \pm ck^n$: Parabolic
+    \item $ax \pm by = ck^n$: Line
+\end{enumerate}
+\end{center}
+
+\newpage
+
+\section{Arc Length}
+The arc length of a curve $C$ defined by the vector function $\vec{r}(t) = \left\langle \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} \right\rangle$ is given by:
+
+\begin{equation}
+    L = \int_{a}^{b} \lVert \vec{r}'(t) \rVert \, dt 
+\end{equation}
+Where $\vec{r}'(t) = \left\langle \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} \right\rangle$
+
+\begin{equation}
+    \therefore \lVert \vec{r}'(t) \rVert = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2}
+\end{equation}
+%Explain relationship of arc length to the derivative of the vector function
+\subsection{Vector Velocity}
+The velocity of a particle moving along a curve $C$ is given by the derivative of the vector function $\vec{r}(t)$:
+\begin{equation}
+    \vec{v}(t) = \vec{r}'(t) = \left\langle \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} \right\rangle
+\end{equation}
+\begin{equation}
+    \therefore \lVert \vec{v}(t) \rVert = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} = \lVert \vec{r}'(t) \rVert
+\end{equation}\\
+\newline
+
+\section{Tangent and Normal Vectors}
+\subsection{Tangent Vector}
+The tangent vector to a curve $C$ at a point $P$ is given by the derivative of the vector function $\vec{r}(t)$:
+\begin{equation}
+    \vec{T}(t) = \frac{1}{\lVert \vec{r}'(t) \rVert} \cdot \vec{r}'(t) = \frac{1}{\lVert \vec{v}(t) \rVert} \cdot \vec{v}(t)
+\end{equation}
+
+
+\subsection{Normal Vector}
+The normal vector to a curve $C$ at a point $P$ is given by the derivative of the tangent vector $\vec{T}(t)$:
+\begin{equation}
+    \vec{N}(t) = \frac{1}{\left\lVert \frac{d\vec{T}}{dt} \right\rVert} \cdot \frac{d\vec{T}}{dt}
+\end{equation}
+
+
+\subsection{Curvature}
+The curvature of a curve $C$ at a point $P$ is given by:
+\begin{equation}
+    \kappa = \frac{1}{\frac{ds}{dt}} \cdot \left\lVert \frac{d\vec{T}}{dt} \right\rVert = \left\lVert \frac{d\vec{T}}{ds} \right\rVert = \frac{\lVert \vec{v}(t) \times \vec{a}(t) \rVert}{\lVert \vec{v}(t) \rVert^3}
+\end{equation}
+Where $\vec{v}(t)$ is the velocity vector and $\vec{a}(t)$ is the acceleration vector.
+
+\newpage
+
+\section{Acceleration}
+
+\subsection{Acceleration as Linear Components}
+
+Now that we have the unit tangent vector $\vec{T}(t)$ and the unit normal vector $\vec{N}(t)$, we can break down the acceleration vector $\vec{a}(t)$ into linear components: \\
+
+\begin{equation}
+    \vec{a}(t) = \frac{d\vec{v}}{dt} = \frac{d}{dt} \left( \frac{ds}{dt} \cdot \vec{T} \right) = \frac{d^2s}{dt^2} \cdot \vec{T} + \frac{ds}{dt} \cdot \frac{d\vec{T}}{dt}  
+\end{equation}
+
+\begin{equation}
+    \text{Since} \quad \frac{d\vec{T}}{dt} = \left\lVert \frac{d\vec{T}}{dt} \right\rVert \cdot \vec{N} \quad \text{and} \quad \left\lVert \frac{d\vec{T}}{dt} \right\rVert = \kappa \cdot \frac{ds}{dt}
+\end{equation}
+
+\begin{equation}
+    \text{we have:}
+\end{equation}
+
+\begin{equation}
+    \frac{d\vec{T}}{dt} = \frac{ds}{dt} \cdot \kappa \cdot \vec{N}
+\end{equation}
+
+\begin{equation}
+    \therefore \vec{a}(t) = \frac{d^2s}{dt^2} \cdot \vec{T} + \left(\frac{ds}{dt}\right)^2 \cdot \kappa \cdot \vec{N} = a_T \cdot \vec{T} + a_N \cdot \vec{N}
+\end{equation} \\
+\newline
+\noindent
+\begin{minipage}{0.45\textwidth}
+\begin{equation}
+    a_T = \frac{d^2s}{dt^2} = \frac{\vec{v}(t) \cdot \vec{a}(t)}{\lVert \vec{v}(t) \rVert}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{equation}
+    a_N = \left(\frac{ds}{dt}\right)^2 \cdot \kappa
+\end{equation}
+\end{minipage} \\
+\newline
+
+Since these two components of acceleration are orthogonal, the total acceleration is given by: \\
+
+\begin{equation}
+    \lVert \vec{a}(t) \rVert = \sqrt{a_T^2 + a_N^2}
+\end{equation}
+
+\end{document}
+
